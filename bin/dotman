@@ -16,4 +16,3 @@ __builtin__.dotman = DotfilesManager()
 
     
 dotman.scan('/home/wdanilo/.dotfiles')
-

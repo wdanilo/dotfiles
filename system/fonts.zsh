@@ -1,1 +1,1 @@
-source /usr/lib/ft-settings.sh ubuntu
+source /usr/lib/ft-settings.sh windows
