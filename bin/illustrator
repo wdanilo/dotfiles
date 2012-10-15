@@ -1,0 +1,4 @@
+#!/bin/bash
+export WINEPREFIX=~/.wine32
+export WINEARCH=win32
+wine ~/.wine32/drive_c/programs/illustrator/IllustratorPortable.exe

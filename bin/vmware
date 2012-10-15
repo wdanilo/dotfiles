@@ -1,0 +1,9 @@
+echo "loading kernel module vmmon"
+sudo modprobe vmmon
+echo "loading kernel module vmci"
+sudo modprobe vmci
+echo "loading kernel module vmnet"
+sudo modprobe vmnet
+echo "executing vmware"
+/usr/bin/vmware
+

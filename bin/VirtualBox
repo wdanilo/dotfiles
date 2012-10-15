@@ -1,0 +1,18 @@
+#!/bin/sh
+#number of seconds in a minute
+sinm=60
+#number of seconds in an hour
+sinh=3600
+#number of seconds in a day
+sind=86400
+#Calculate the date diff in seconds
+startDate=`date -d "01 Jan 2012" +%s`
+currentDate=`date +%s`
+datediff=$(($startDate-$currentDate))
+
+echo "Loading kernel modules"
+for m in vbox{drv,netadp,netflt}; do sudo modprobe $m; done
+echo "Setting date offset"
+sudo VBoxManage modifyvm win7 --biossystemtimeoffset $datediff
+echo "Executing VirtualBox"
+sudo VirtualBox
