@@ -1,3 +1,8 @@
+# dotman
+zsh
+# chsh -s /bin/zsh wdanilo
+
+
 @eclipse
 nautilus {terminal sound-converter sendto search-tool python pastebin open-terminal image-converter extensions}
 file-roller-nautilus 
@@ -5,10 +10,12 @@ brasero-nautilus
 @'Development Tools'
 @'Development Libraries'
 kmod-nvidia
+# http://awesome.naquadah.org/wiki/Awesome-3-fedora
 awesome
 rxvt-unicode-256color-ml
+# http://makewhatis.com/2011/11/sublime-text-2-fedora-1516-unofficial-repo
 sublime-text
-pidgin {latex}`
+pidgin {latex}
 purple-plugin_pack-pidgin
 vim
 
@@ -24,11 +31,14 @@ gnome-tweak-tool
 gimp
 blender
 transmission {gtk}
-wicd
 python3
 @office
 terminus-fonts
 
+shutter
+gtk-redshift
+
+wicd
 # wicd na agh!
 
 *inconsolata-font*
@@ -40,3 +50,5 @@ larabie-uncommon-fonts
 larabie-straight-fonts
 larabie-fonts-common
 larabie-decorative-fonts
+
+# http://fedorasolved.org/Members/khaytsus/improve-fonts
