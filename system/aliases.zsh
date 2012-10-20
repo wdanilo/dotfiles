@@ -8,3 +8,6 @@ then
   alias ll="gls -l --color"
   alias la='gls -A --color'
 fi
+
+alias s="yum search"
+alias i="sudo yum install"
