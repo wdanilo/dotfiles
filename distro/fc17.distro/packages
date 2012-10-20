@@ -1,0 +1,42 @@
+@eclipse
+nautilus {terminal sound-converter sendto search-tool python pastebin open-terminal image-converter extensions}
+file-roller-nautilus 
+brasero-nautilus 
+@'Development Tools'
+@'Development Libraries'
+kmod-nvidia
+awesome
+rxvt-unicode-256color-ml
+sublime-text
+pidgin {latex}`
+purple-plugin_pack-pidgin
+vim
+
+# dorobic .desktop dla sublime!
+# /home/wdanilo/.purple/smileys
+
+filezilla 
+codeblocks
+mpich2 openmpi-devel 
+texmaker
+gnome-tweak-tool
+
+gimp
+blender
+transmission {gtk}
+wicd
+python3
+@office
+terminus-fonts
+
+# wicd na agh!
+
+*inconsolata-font*
+google-droid*fonts*
+dejavu*fonts*
+liberation*fonts*
+bitstream-vera*
+larabie-uncommon-fonts
+larabie-straight-fonts
+larabie-fonts-common
+larabie-decorative-fonts
