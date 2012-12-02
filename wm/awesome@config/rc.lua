@@ -16,46 +16,28 @@ require("awful.rules")
 require("awful.autofocus")
 require("wibox")
 
+-- notify-send style
+require('notification')
 -- mac osx expose (http://awesome.naquadah.org/wiki/Revelation)
 require("revelation")
+
+require("error")
 -- User libraries
 local vicious = require("vicious")
 local scratch = require("scratch")
 -- }}}
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
-end
-
--- Handle runtime errors after startup
-
-do
-    local in_error = false
-    awesome.add_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
-
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = err })
-        in_error = false
-    end)
-end
--- }}}
-
-
 local terminal = "urxvt"
 
 --awful.util.spawn_with_shell("compton -c -C -t-5 -l-5 -r3 -o1")
-awful.util.spawn_with_shell("unclutter -noevents")
+-- awful.util.spawn_with_shell("unclutter -noevents")
 awful.util.spawn_with_shell("xscreensaver -no-splash")
-awful.util.spawn_with_shell("compton")
+-- awful.util.spawn_with_shell("compton")
+awful.util.spawn_with_shell("shutter --min_at_startup --disable_systray")
+-- awful.util.spawn_with_shell("unset DISPLAY; dropbox start")
+awful.util.spawn_with_shell("dropbox start") 
+awful.util.spawn_with_shell("amixer -c 0 -q set Master 100dB+")
+awful.util.spawn_with_shell("gtk-redshift -l 50.061:19.938 -m vidmode -t 5700:4500")
 
 -- {{{ Variable definitions
 local altkey = "Mod1"
@@ -234,10 +216,12 @@ upicon.image = image(beautiful.widget_netup)
 net_down_widget = widget({ type = "textbox" })
 net_up_widget = widget({ type = "textbox" })
 -- Register widget
+--vicious.register(net_down_widget, vicious.widgets.wifi, "${ssid}", 90)
+--vicious.register(net_up_widget, vicious.widgets.wifi, "${link}", 90)
 vicious.register(net_down_widget, vicious.widgets.net, '<span color="'
-  .. beautiful.fg_netdn_widget ..'">${eth0 down_kb}</span>', 3)
+  .. beautiful.fg_netdn_widget ..'">${wlan0 down_kb}</span>', 3)
 vicious.register(net_up_widget, vicious.widgets.net, '<span color="'
-  .. beautiful.fg_netup_widget ..'">${eth0 up_kb}</span>', 3)
+  .. beautiful.fg_netup_widget ..'">${wlan0 up_kb}</span>', 3)
 -- }}}
 
 --[[
@@ -299,8 +283,8 @@ volbar:set_gradient_colors({ beautiful.fg_widget,
 }) -- Enable caching
 vicious.cache(vicious.widgets.volume)
 -- Register widgets
-vicious.register(volbar,    vicious.widgets.volume,  "$1",  2, "PCM")
-vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "PCM")
+vicious.register(volbar,    vicious.widgets.volume,  "$1",  2, "PCM -c 0")
+vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "PCM -c 0")
 -- Register buttons
 volbar.widget:buttons(awful.util.table.join(
    awful.button({ }, 1, function () exec("kmix") end),
@@ -418,7 +402,7 @@ for s = 1, scount do
         --s == 1 and group_close or spacer,
 				--s == 1 and systray or nil,
         group_close, datewidget, dateicon,
-        spacer, volwidget,  volbar.widget, volicon,
+        spacer, volwidget,   volicon, --volbar.widget,
 				spacer, batwidget, baticon,
         --spacer, orgwidget,  orgic`on,
         --spacer, mailwidget, mailicon,
@@ -448,7 +432,6 @@ clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 2, awful.mouse.client.resize)
 )
 -- }}}
-
 --[[
 local quake = require("quake")
 
@@ -468,17 +451,35 @@ end
 
 
 
-
 -- {{{ Global keys
 globalkeys = awful.util.table.join(
     -- {{{ Applications
 		--awful.key({ modkey }, "F12", function () exec(terminal) end),
+		--awful.key({ modkey }, "F12", function () quakeconsole[mouse.screen]:toggle() end),
+		awful.key({ modkey }, ".", function () exec("amixer -c 0 -q set PCM 2dB+") end),
+		awful.key({ modkey }, ",", function () exec("amixer -c 0 -q set PCM 2dB-") end),
 
-		awful.key({ modkey }, "`", function () exec(terminal) end),
+
+		awful.key({ modkey }, "`", function () 
+--[[
+local urxvt = function (c) 
+return awful.rules.match(c, {class = "URxvt"}) 
+end 
+print "!!!!"
+print (awful.client.cycle(urxvt)==nil)
+for c in awful.client.cycle(urxvt) do 
+c.minimized = false 
+end 
+--]]
+
+
+      exec(terminal) end),
 		awful.key({ modkey }, "space", function () exec("synapse") end),
 
 		awful.key({  }, "XF86ScreenSaver", function () exec("xscreensaver-command --lock") end),
-		awful.key({  }, "Print", function () exec("scrot ~/screenshots/%Y-%m-%d-%T-screenshot.png") end),
+		awful.key({  }, "Print", function () exec("shutter -s") end),
+		awful.key({ modkey }, "Print", function () exec("shutter -f") end),
+		awful.key({ modkey }, "F9", function () exec("shutter -wzx") end),
 
     --awful.key({ modkey }, "e", function () exec("emacsclient -n -c") end),
     awful.key({ modkey }, "r", function () exec("rox", false) end),
@@ -593,7 +594,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey }, "q", function (c) c:kill() end),
     --awful.key({ modkey }, "m", function (c) scratch.pad.set(c, 0.60, 0.60, true) end),
     awful.key({ modkey }, "f", function (c) c.fullscreen = not c.fullscreen end),
-    awful.key({ modkey }, "m", function (c)
+    awful.key({ modkey }, "w", function (c)
         c.maximized_horizontal = not c.maximized_horizontal
         c.maximized_vertical   = not c.maximized_vertical
     end),

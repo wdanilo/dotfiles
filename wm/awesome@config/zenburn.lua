@@ -14,7 +14,8 @@ theme.wallpaper_cmd = { "awsetbg /home/wdanilo/Pictures/clean.png" }
 
 
 -- {{{ Styles
-theme.font      = "Terminus 8"
+--theme.font      = "Terminus 8"
+theme.font      = "ProggyCleanTT CE 12"
 
 -- {{{ Colors
 theme.fg_normal = "#AAAAAA"
