@@ -55,3 +55,45 @@ larabie-decorative-fonts
 http://mrkandy.wordpress.com/2010/04/01/consolas-font-%D0%B2-linux/
 
 gnome-font-viewer
+
+vlc
+
+# su -c "rpm -ihv http://mulx.playonlinux.com/fedora/yum/base/playonlinux-yum-3-3.noarch.rpm"
+playonlinux
+
+#cuda:
+http://fedoraproject.org/wiki/Cuda
+
+#old gcc:
+yum install glibc-devel.i686 libgcc.i686
+# oraz: http://unix.stackexchange.com/questions/32240/installing-gcc-4-5-on-fedora-16
+
+
+#playonlinux
+icoutils
+p7zip
+
+Driver:   Installation Failed
+Toolkit:  Installed in /opt/cuda-5.0
+Samples:  Installed in /opt/cuda-5.0/samples (pristine) and /root/NVIDIA_CUDA-5.0_Samples (writable)
+
+* Please make sure your PATH includes /opt/cuda-5.0/bin
+* Please make sure your LD_LIBRARY_PATH
+*   for 32-bit Linux distributions includes /opt/cuda-5.0/lib
+*   for 64-bit Linux distributions includes /opt/cuda-5.0/lib64:/lib
+* OR
+*   for 32-bit Linux distributions add /opt/cuda-5.0/lib
+*   for 64-bit Linux distributions add /opt/cuda-5.0/lib64 and /lib
+* to /etc/ld.so.conf and run ldconfig as root
+
+* To uninstall CUDA, remove the CUDA files in /opt/cuda-5.0
+* Installation Completed
+
+
+
+graphviz-python
+mercurial
+
+llvm llvm-devel clang
+
+http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-6-on-fedora-centos-red-hat-rhel/
