@@ -27,7 +27,7 @@ URxvt*depth:					32
 URxvt*scrollBar_right:			true
 ! URxvt*font:					    xft:inconsolata:pixelsize=12
 ! URxvt*font:					    xft:Montecarlo:regular:size=9
-URxvt*font:					    xft:Consolas:regular:size=10
+! URxvt*font:					    xft:Consolas:regular:size=10
 Urxvt*cursorColor:				white
 URxvt*scrollColor:				#111111
 URxvt*perl-ext-common:			default,clipboard,tabbed,matcher

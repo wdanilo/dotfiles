@@ -1,0 +1,25 @@
+# These settings were set by the metro build script that automatically built this stage.
+# Please consult /etc/make.conf.example for a more detailed example.
+
+CFLAGS="-mtune=generic -O2 -pipe"
+CXXFLAGS="-mtune=generic -O2 -pipe"
+CHOST="x86_64-pc-linux-gnu"
+ACCEPT_KEYWORDS="~amd64"
+ACCEPT_LICENSE="*"
+
+
+USE="bash-completion mmx sse sse2 X dbus gtk hal alsa cdr dvd unicode svg \
+     gstreamer firefox -ipv6 -arts -qt3 -qt4 -kde 64bit n64 \
+     -multilib gnome samba introspection gtk gtk3 -pulseaudio \
+     xinerama xvmc"
+
+CONFIG_PROTECT="/etc/passwd /etc/shadow /etc/conf.d/net /etc/hostname /usr/share/gnupg/qualified.txt /usr/share/themes/oxygen-gtk/gtk-2.0 /var/lib/hsqldb"
+
+VIDEO_CARDS="nvidia"
+INPUT_DEVICES="evdev keyboard mouse synaptics"
+     
+LINGUAS="en pl"
+FEATURES="ccache distcc buildpkg"
+MAKEOPTS="-j9"
+
+source /var/lib/layman/make.conf

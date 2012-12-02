@@ -1,0 +1,3 @@
+x11-libs/cairo xcb
+#required by media-sound/pulseaudio-2.1-r1[udev], required by net-im/empathy-3.4.2.3, required by gnome-base/gnome-core-apps-3.4.1, required by gnome-base/gnome-3.4.1, required by @selected, required by @world (argument)
+>=virtual/udev-171 hwdb
