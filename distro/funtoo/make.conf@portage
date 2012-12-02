@@ -19,7 +19,11 @@ VIDEO_CARDS="nvidia"
 INPUT_DEVICES="evdev keyboard mouse synaptics"
      
 LINGUAS="en pl"
-FEATURES="ccache distcc buildpkg"
+#FEATURES="ccache distcc buildpkg"
+FEATURES="ccache distcc buildpkg userfetch getbinpkg"
 MAKEOPTS="-j9"
+
+EMERGE_DEFAULT_OPTS="--quiet-build=y --binpkg-respect-use=n"
+PORTAGE_BINHOST="http://192.168.1.1/funtoo/packages"
 
 source /var/lib/layman/make.conf
