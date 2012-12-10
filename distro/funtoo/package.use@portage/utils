@@ -1,2 +1,4 @@
 gnome-extra/synapse plugins
 gnome-base/nautilus sendto
+
+sys-libs/zlib minizip
